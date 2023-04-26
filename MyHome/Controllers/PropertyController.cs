@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MyHome.Core.Services;
 
 namespace MyHome.Controllers
 {
@@ -6,17 +7,21 @@ namespace MyHome.Controllers
     [Route("[controller]")]
     public class PropertyController : ControllerBase
     {
-        private readonly ILogger<PropertyController> _logger;
+        private readonly IPropertyService _propertyService;
 
-        public PropertyController(ILogger<PropertyController> logger)
+        public PropertyController(IPropertyService propertyService)
         {
-            _logger = logger;
+            _propertyService = propertyService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return null;
+            var properties = await _propertyService.GetAll();
+            if (properties.Any()) { 
+                return Ok(properties); 
+            }
+            return NotFound();
         }
     }
 }
