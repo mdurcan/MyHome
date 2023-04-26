@@ -10,7 +10,7 @@ namespace MyHome.Core.Models
     {
         public int PropertyId { get; set; }
         public int GroupId { get; set; }
-        public Customdata CustomData { get; set; }
+        public CustomData CustomData { get; set; }
         public DateTime RefreshedOn { get; set; }
         public Location Location { get; set; }
         public string Address { get; set; }
@@ -47,7 +47,7 @@ namespace MyHome.Core.Models
         public bool IsTopSpot { get; set; }
         public string BedsString { get; set; }
         public string PriceAsString { get; set; }
-        public Brochuremap BrochureMap { get; set; }
+        public BrochureMap BrochureMap { get; set; }
         public int id { get; set; }
         public float SizeStringMeters { get; set; }
         public bool PriceChangeIsIncrease { get; set; }

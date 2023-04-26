@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using MyHome.Core.Services;
+using MyHome.Data;
 
 namespace MyHome.Controllers
 {
@@ -7,17 +7,17 @@ namespace MyHome.Controllers
     [Route("[controller]")]
     public class PropertyController : ControllerBase
     {
-        private readonly IPropertyService _propertyService;
+        private readonly IPropertyData _propertyData;
 
-        public PropertyController(IPropertyService propertyService)
+        public PropertyController(IPropertyData propertyData)
         {
-            _propertyService = propertyService;
+            _propertyData = propertyData;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var properties = await _propertyService.GetAll();
+            var properties = await _propertyData.GetAll();
             if (properties.Any()) { 
                 return Ok(properties); 
             }

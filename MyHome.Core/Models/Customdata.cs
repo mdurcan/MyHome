@@ -1,6 +1,6 @@
 ﻿namespace MyHome.Core.Models
 {
-    public class Customdata
+    public class CustomData
     {
         public int[] RelatedPropertyIDs { get; set; }
         public bool IsMyHomePassport { get; set; }

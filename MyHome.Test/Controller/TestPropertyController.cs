@@ -1,5 +1,6 @@
+using MyHome.Data;
 
-namespace MyHome.Test
+namespace MyHome.Test.Controller
 {
     public class TestPropertyController
     {
@@ -8,15 +9,10 @@ namespace MyHome.Test
             [Fact]
             public async Task Get_OnSuccess_ReturnStatusCode200()
             {
-                var mockService = new Mock<IPropertyService>();
+                var mockService = new Mock<IPropertyData>();
                 mockService
                     .Setup(s => s.GetAll())
-                    .ReturnsAsync(new List<Property>() { 
-                        new Property()
-                        {
-                            
-                        }
-                    });
+                    .ReturnsAsync(PropertyFixture.GetTestProperties());
 
                 var controller = new PropertyController(mockService.Object);
 
@@ -28,7 +24,7 @@ namespace MyHome.Test
             [Fact]
             public async Task Get_OnSuccess_InvokePropertyService()
             {
-                var mockService = new Mock<IPropertyService>();
+                var mockService = new Mock<IPropertyData>();
                 mockService
                     .Setup(s => s.GetAll())
                     .ReturnsAsync(new List<Property>());
@@ -43,7 +39,7 @@ namespace MyHome.Test
             [Fact]
             public async Task Get_OnSuccess_ReturnsListOfProperties()
             {
-                var mockService = new Mock<IPropertyService>();
+                var mockService = new Mock<IPropertyData>();
                 mockService
                     .Setup(s => s.GetAll())
                     .ReturnsAsync(PropertyFixture.GetTestProperties());
@@ -60,7 +56,7 @@ namespace MyHome.Test
             [Fact]
             public async Task Get_OnNoPropertiesFound_Resturns404()
             {
-                var mockService = new Mock<IPropertyService>();
+                var mockService = new Mock<IPropertyData>();
                 mockService
                     .Setup(s => s.GetAll())
                     .ReturnsAsync(new List<Property>());
@@ -72,6 +68,14 @@ namespace MyHome.Test
                 Assert.IsType<NotFoundResult>(result);
                 var objectResult = (NotFoundResult)result;
                 Assert.Equal(StatusCodes.Status404NotFound, objectResult.StatusCode);
+            }
+        }
+
+        public class TestPost
+        {
+            [Fact]
+            public void test1()
+            {
             }
         }
     }

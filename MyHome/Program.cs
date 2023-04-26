@@ -1,4 +1,4 @@
-using MyHome.Core.Services;
+using MyHome.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,5 +23,5 @@ app.Run();
 
 void ConfigureServices(IServiceCollection services)
 {
-    services.AddTransient<IPropertyService, PropertyService>();
+    services.AddTransient<IPropertyData, PropertyData>();
 }

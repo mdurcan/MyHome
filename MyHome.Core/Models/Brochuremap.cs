@@ -1,6 +1,6 @@
 ﻿namespace MyHome.Core.Models
 {
-    public class Brochuremap
+    public class BrochureMap
     {
         public double longitude { get; set; }
         public double latitude { get; set; }

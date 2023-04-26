@@ -1,8 +1,8 @@
 ﻿using MyHome.Core.Models;
 
-namespace MyHome.Core.Services
+namespace MyHome.Data
 {
-    public interface IPropertyService
+    public interface IPropertyData
     {
         public Task<List<Property>> GetAll();
     }
