@@ -108,5 +108,12 @@ namespace MyHome.Test.Fixture
                 RelatedPropertiesTotal = 0
             };
         }
+
+        public static JsonPatchDocument<Property> GetFieldData()
+        {
+            var doc = new JsonPatchDocument<Property>();
+            doc.Replace(p => p.Address, "8 Phelan Street");
+            return doc;
+        }
     }
 }

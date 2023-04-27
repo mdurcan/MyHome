@@ -1,11 +1,15 @@
-﻿using MyHome.Core.Models;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using MyHome.Core.Models;
+using System.Transactions;
 
 namespace MyHome.Data
 {
     public interface IPropertyData
     {
-        public Task<List<Property>> GetAll();
-        public Task<Property> GetById(int id);
-        public Task<Property> Add(Property entity);
+        public List<Property> GetAll();
+        public Property GetById(int id);
+        public Property Add(Property entity);
+        public Property Update(int id, JsonPatchDocument<Property> fields);
+        public Property Delete(int id);
     }
 }

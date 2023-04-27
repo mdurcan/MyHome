@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyHome.Core.Models;
 using MyHome.Data;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace MyHome.Controllers
 {
@@ -16,9 +17,9 @@ namespace MyHome.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public IActionResult Get()
         {
-            var properties = await _propertyData.GetAll();
+            var properties = _propertyData.GetAll();
             if (properties.Any()) { 
                 return Ok(properties); 
             }
@@ -26,9 +27,9 @@ namespace MyHome.Controllers
         }
 
         [HttpGet("{propertyId}")]
-        public async Task<IActionResult> Get(int propertyId)
+        public IActionResult Get(int propertyId)
         {
-            var property = await _propertyData.GetById(propertyId);
+            var property = _propertyData.GetById(propertyId);
             if (property != null)
             {
                 return Ok(property);
@@ -37,9 +38,41 @@ namespace MyHome.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]Property property)
+        public IActionResult Post([FromBody] Property property)
         {
-            throw new NotImplementedException();
+            if (property == null)
+                return BadRequest("Missing Property");
+
+            var propertyToReturn = _propertyData.Add(property);
+            if (propertyToReturn != null)
+            {
+                return Created($"Get/{propertyToReturn.PropertyId}", propertyToReturn);
+            }
+            return BadRequest("Property with same propertyId already excists");
         }
+
+        [HttpPatch("{propertyId}")]
+        public IActionResult Patch(int propertyId, [FromBody]JsonPatchDocument<Property> fields)
+        {
+            if (fields == null)
+                return BadRequest("Missing Fields");
+
+            var property = _propertyData.Update(propertyId, fields);
+            if (property != null)
+            {
+                return Ok(property);
+            }
+            return NotFound();
+        }
+
+        [HttpDelete("{propertyId}")]
+        public IActionResult Delete(int propertyId)
+        {
+            var property =  _propertyData.Delete(propertyId);
+            if (property != null)
+                return Ok();
+            return NotFound();
+        }
+
     }
 }

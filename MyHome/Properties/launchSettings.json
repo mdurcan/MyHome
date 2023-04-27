@@ -11,9 +11,7 @@
   "profiles": {
     "MyHome": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": true,
-      "launchUrl": "myhome",
       "applicationUrl": "https://localhost:7227;http://localhost:5102",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -22,7 +20,6 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "myhome",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
