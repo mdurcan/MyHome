@@ -8,8 +8,10 @@ namespace MyHome.Core.Models
 {
     public class Property
     {
+        public int id { get; set; }
         public int PropertyId { get; set; }
         public int GroupId { get; set; }
+        public int SaleTypeId { get; set; }
         public CustomData CustomData { get; set; }
         public DateTime RefreshedOn { get; set; }
         public Location Location { get; set; }
@@ -39,7 +41,6 @@ namespace MyHome.Core.Models
         public bool IsPrivateLandlord { get; set; }
         public bool IsBrandBooster { get; set; }
         public bool IsActive { get; set; }
-        public int SaleTypeId { get; set; }
         public bool IsFavourite { get; set; }
         public bool HasVideos { get; set; }
         public bool HasWebP { get; set; }
@@ -48,7 +49,6 @@ namespace MyHome.Core.Models
         public string BedsString { get; set; }
         public string PriceAsString { get; set; }
         public BrochureMap BrochureMap { get; set; }
-        public int id { get; set; }
         public float SizeStringMeters { get; set; }
         public bool PriceChangeIsIncrease { get; set; }
         public string DisplayAddress { get; set; }
@@ -60,8 +60,8 @@ namespace MyHome.Core.Models
         public string BathString { get; set; }
         public string BerRating { get; set; }
         public string EnergyRatingMediaPath { get; set; }
-        public object[] OpenViewings { get; set; }
-        public object[] VirtualViewings { get; set; }
+        public List<object> OpenViewings { get; set; }
+        public List<object> VirtualViewings { get; set; }
         public string OrderedDisplayAddress { get; set; }
         public string SeoDisplayAddress { get; set; }
         public string BrochureUrl { get; set; }
@@ -69,10 +69,10 @@ namespace MyHome.Core.Models
         public int PhotoCount { get; set; }
         public string MainPhoto { get; set; }
         public string MainPhotoWeb { get; set; }
-        public string[] Photos { get; set; }
-        public object[] TravelTimes { get; set; }
-        public object[] AuctionList { get; set; }
-        public string[] AdditionalLogoUrls { get; set; }
+        public List<string> Photos { get; set; }
+        public List<object> TravelTimes { get; set; }
+        public List<object> AuctionList { get; set; }
+        public List<string> AdditionalLogoUrls { get; set; }
         public int RelatedPropertiesTotal { get; set; }
         public string LatestPriceChangeString { get; set; }
         public string NewHomeSizeString { get; set; }

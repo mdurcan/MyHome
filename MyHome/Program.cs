@@ -23,5 +23,5 @@ app.Run();
 
 void ConfigureServices(IServiceCollection services)
 {
-    services.AddTransient<IPropertyData, PropertyData>();
+    //services.AddTransient<IPropertyData, PropertyData>();
 }
